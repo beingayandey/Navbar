@@ -21,7 +21,7 @@ $('.menu-link').click(function () {
 	if (navbarMenu.style.maxHeight !== '0px') {
 
 		burgerMenu.classList.remove("is-active");
-		navbarMenu.style.maxHeight = "0px";
+		navbarMenu.removeAttribute("style");
 		navbarMenu.classList.remove("active");
 
 	}
@@ -71,10 +71,18 @@ jQuery("body").bind("click", function (e) {
 		if (navbarMenu.style.maxHeight !== '0px') {
 
 			burgerMenu.classList.remove("is-active");
-			navbarMenu.style.maxHeight = "0px";
+			// navbarMenu.style.maxHeight = "0px";
+			navbarMenu.removeAttribute("style");
 			navbarMenu.classList.remove("active");
 
 		}
 
+	}
+});
+document.addEventListener('click', function (event) {
+	var clickover = event.target;
+	var _opened = document.querySelector(".menu").classList.contains("active");
+	if (_opened === true && !clickover.closest('.navbar')) {
+		document.querySelector(".navbar-toggler").click();
 	}
 });
